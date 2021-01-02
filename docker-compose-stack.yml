@@ -119,10 +119,10 @@ secrets:
 
 configs:
   nginx-config:
-    file: ./conf/nginx/nginx.conf
+    file: ./conf/docker/nginx/nginx.conf
   nginx-vault-config:
-    file: ./conf/nginx/nginx_vault_swarm.conf
+    file: ./conf/docker/nginx/nginx_vault_swarm.conf
   vault-config:
-    file: ./conf/vault/vault-config-swarm.hcl
+    file: ./conf/docker/vault/vault-config-swarm.hcl
   consul-config:
-    file: ./conf/consul/consul-config-swarm.hcl
+    file: ./conf/docker/consul/consul-config-swarm.hcl

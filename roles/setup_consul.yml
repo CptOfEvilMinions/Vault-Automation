@@ -47,7 +47,6 @@
 ####################################################################
 # Setup Consul
 ####################################################################
-
 - name: Create Consul directory
   file:
     path: '/var/lib/consul'
@@ -65,7 +64,7 @@
 
 - name: Stat Consul data
   stat:
-    path: '/var/lib/consu/node-id'
+    path: '/var/lib/consul/node-id'
   register: consul_init
 
 - name: Generate Consul encryption key

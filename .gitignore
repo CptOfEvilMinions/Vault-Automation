@@ -1,1 +1,6 @@
-conf/tls/*
+conf/tls/*.crt
+conf/tls/*.key
+*.crt
+*.key
+*.json
+*.csr

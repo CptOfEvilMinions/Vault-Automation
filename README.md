@@ -3,7 +3,11 @@
 
 ## Step 0: Generate OpenSSL certificate
 This project contains with a self-signed OpenSSL ceretificate which should ONLY BE used for testing. Below are instructions to make your own
-1. `openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout conf/tls/vault.key -out conf/tls/vault.crt`
+1. `vim conf/tls/ssl.conf`
+  2. Set the necessary values such as:
+    3. `CN` -  Set to the FQDN of the vault server
+    3. `DNS.1` -  Set to it to the same value of CN
+1. `openssl req -new -x509 -newkey rsa:2048 -sha256 -nodes -keyout conf/tls/vault.key -days 3560 -out conf/tls/vault.crt -config conf/tls/ssl.conf`
 
 ## Step 1: Spin up Docker stack
 ### Docker-compose v2.X
@@ -62,6 +66,9 @@ This project contains with a self-signed OpenSSL ceretificate which should ONLY 
 * [Install Vault on macOS](https://learn.hashicorp.com/tutorials/vault/getting-started-install)
 * [Vault API endpoints](https://www.vaultproject.io/api-docs/system/health)
 * [Install and Configure Hashicorp Vault Server on Ubuntu / CentOS / Debian](https://computingforgeeks.com/install-and-configure-vault-server-linux/)
+* [Vault Commands (CLI)](https://www.vaultproject.io/docs/commands#vault-commands-cli)
+* [Security – Create self signed SAN certificate with OpenSSL](https://somoit.net/security/security-create-self-signed-san-certificate-openssl)
+* []()
 * []()
 * []()
 * []()
@@ -88,6 +95,6 @@ This project contains with a self-signed OpenSSL ceretificate which should ONLY 
 
 ### NGINX
 * [Getting curl to output HTTP status code?](https://superuser.com/questions/272265/getting-curl-to-output-http-status-code)
-* []()
+* [Redirect HTTP to HTTPS in Nginx](https://serversforhackers.com/c/redirect-http-to-https-nginx)
 * []()
 * []()
