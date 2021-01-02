@@ -1,0 +1,31 @@
+####################################################################
+# Setup UFW
+####################################################################
+- name: Setup Ubuntu UFW firewall
+  ufw:
+    rule: allow
+    name: OpenSSH
+
+- name: Allow HTTP
+  ufw:
+    rule: allow
+    port: '80'
+    proto: tcp
+
+- name: Allow HTTPS
+  ufw:
+    rule: allow
+    port: '443'
+    proto: tcp
+
+- name: UFW and NGINX healthcheck
+  uri:
+    url: "https://{{ ansible_default_ipv4.address }}:443/v1/sys/health"
+    follow_redirects: none
+    method: GET
+    validate_certs: 'no'
+    status_code: 503
+  register: _result
+  until: _result.status == 503
+  retries: 720 # 720 * 5 seconds = 1hour (60*60/5)
+  delay: 5 # Every 5 seconds

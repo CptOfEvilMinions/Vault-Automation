@@ -1,0 +1,61 @@
+####################################################################
+# Install/Setup Nginx
+####################################################################
+# - name: Install/Setup Nginx
+#   apt:
+#     name: ['nginx']
+#     state: latest
+
+# - name: Copy Vault public cert
+#   template:
+#     src: '{{ item }}'
+#     dest: '/etc/ssl/certs/vault.crt'
+#     owner: root
+#     group: root
+#     mode: 0644
+#   with_fileglob:
+#     - conf/tls/*.crt
+
+# - name: Copy Vault private key
+#   template:
+#     src: '{{ item }}'
+#     dest: '/etc/ssl/private/vault.key'
+#     owner: root
+#     group: root
+#     mode: 0400
+#   with_fileglob:
+#     - conf/tls/*.key
+
+# - name: Copy nginx.conf
+#   template:
+#     src: conf/ansible/nginx/nginx.conf
+#     dest: /etc/nginx/nginx.conf
+#     owner: root
+#     group: root
+#     mode: 0400
+
+# - name: Copy nginx_vault.conf
+#   template:
+#     src: 'conf/ansible/nginx/nginx_vault.conf'
+#     dest: '/etc/nginx/conf.d/vault.conf'
+#     owner: root
+#     group: root
+#     mode: 0400
+
+# - name: Start Nginx service
+#   service:
+#     name: nginx
+#     state: restarted
+#     enabled: yes
+
+- name: NGINX healthcheck
+  uri:
+    url: "https://{{ ansible_default_ipv4.address }}:443/v1/sys/health"
+    follow_redirects: none
+    method: GET
+    validate_certs: 'no'
+    status_code: 503
+  register: _result
+  until: _result.status == 503
+  retries: 720 # 720 * 5 seconds = 1hour (60*60/5)
+  delay: 5 # Every 5 seconds
