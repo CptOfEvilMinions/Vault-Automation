@@ -3,8 +3,8 @@
   become_user: root
   tasks:
     - include_vars: 'group_vars/hashicorp.yml'
-    #- import_tasks: 'roles/init_linux.yml'     # Init Linux
-    #- import_tasks: 'roles/setup_consul.yml'   # Install Consul
-    #- import_tasks: 'roles/setup_vault.yml'    # Install Vault
-    #- import_tasks: 'roles/setup_nginx.yml'    # Install NGINX
+    - import_tasks: 'roles/init_linux.yml'     # Init Linux
+    - import_tasks: 'roles/setup_consul.yml'   # Install Consul
+    - import_tasks: 'roles/setup_vault.yml'    # Install Vault
+    - import_tasks: 'roles/setup_nginx.yml'    # Install NGINX
     - import_tasks: 'roles/setup_ufw.yml'      # Install UFW

@@ -11,10 +11,10 @@ ST = NY
 L = Buffalo
 O = Example
 emailAddress = lolz@gmail.com
-CN = vault.example.com
+CN = vault.{{ base_domain }}
 
 [v3_req]
 subjectAltName = @alt_names
 
 [alt_names]
-DNS.1 = vault.example.com
+DNS.1 = vault.{{ base_domain }}

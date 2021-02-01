@@ -1,4 +1,5 @@
-FROM vault:1.6.1
+ARGS VAULT_VERSION
+FROM vault:${VAULT_VERSION}
 
 # add the config file
 COPY conf/docker/vault/vault-config.hcl /vault/config/vault-config.hcl

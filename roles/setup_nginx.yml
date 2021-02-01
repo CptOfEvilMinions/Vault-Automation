@@ -50,7 +50,7 @@
 
 - name: NGINX healthcheck
   uri:
-    url: "https://{{ ansible_default_ipv4.address }}:443/v1/sys/health"
+    url: "https://127.0.0.1:443/v1/sys/health"
     follow_redirects: none
     method: GET
     validate_certs: 'no'

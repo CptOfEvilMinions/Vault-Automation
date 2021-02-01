@@ -1,4 +1,5 @@
-FROM nginx:1.19.6-alpine
+ARG NGINX_VERSION
+FROM nginx:${NGINX_VERSION}
 
 RUN mkdir /etc/nginx/tls
 COPY conf/tls/*.crt /etc/nginx/tls/vault.crt

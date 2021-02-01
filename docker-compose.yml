@@ -5,6 +5,8 @@ services:
     build: 
       context: .
       dockerfile: docker/Dockerfile-nginx
+      args:
+        - NGINX_VERSION:${NGINX_VERSION}
     container_name: 'vault-nginx'
     restart: unless-stopped
     networks: 
@@ -23,6 +25,8 @@ services:
     build: 
       context: .
       dockerfile: docker/Dockerfile-vault
+      args:
+        - VAULT_VERSION:${VAULT_VERSION}
     container_name: 'vault-app-temp'
     restart: unless-stopped
     networks: 
@@ -46,6 +50,8 @@ services:
     build:
       context: .
       dockerfile: docker/Dockerfile-consul
+      args:
+        - CONSUL_VERSION: ${CONSUL_VERSION}
     container_name: 'vault-consul-temp'
     restart: unless-stopped
     networks: 

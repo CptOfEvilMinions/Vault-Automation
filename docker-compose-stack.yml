@@ -39,7 +39,8 @@ services:
   vault:
     image: vault:1.6.1
     # DO NOT REMOVE the entrypoint the default is `vault dev`
-    entrypoint: vault server -config=/vault/config/vault-config.hcl
+    #entrypoint: vault server -config=/vault/config/vault-config.hcl
+    command: 'server -config=/vault/config/vault-config.hcl'
     configs:
       - source: vault-config
         target: /vault/config/vault-config.hcl

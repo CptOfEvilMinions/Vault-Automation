@@ -1,41 +1,9 @@
-# vault Docker
+# Vault Automation
+Blog post: [Getting started with Hashicorp Vault v1.6.1](https://holdmybeersecurity.com/2021/01/31/getting-started-with-hashicorp-vault)
 
-
-## Step 0: Generate OpenSSL certificate
-This project contains with a self-signed OpenSSL ceretificate which should ONLY BE used for testing. Below are instructions to make your own
-1. `vim conf/tls/ssl.conf`
-  2. Set the necessary values such as:
-    3. `CN` -  Set to the FQDN of the vault server
-    3. `DNS.1` -  Set to it to the same value of CN
-1. `openssl req -new -x509 -newkey rsa:2048 -sha256 -nodes -keyout conf/tls/vault.key -days 3560 -out conf/tls/vault.crt -config conf/tls/ssl.conf`
-
-## Step 1: Spin up Docker stack
-### Docker-compose v2.X
-1. `docker-compose build`
-1. `docker-compose up -d`
-
-### Docker-compose v3.X
-1. `docker stack deploy -c docker-compose-stack.yml vault`
-1. `docker service logs -f vault_vault`
-
-## Step 2: Init Vault
-1. Open a browser to `https://<Docker IP addr>:8443`
-1. Enter `1` for Key Shares
-1. Enter `1` for Key threshold
-  1. Select Initialize
-1. Select “Download keys”
-1. Open terminal
-1. `cat ~/Downloads/vault-cluster-*`
-1. Back to browser
-1. Select "Continue to Unseal”
-1. Enter `<key from downloaded file>` into Master Key Portion
-1. Select “Unseal”
-1. Select “Token” for method
-1. Enter `<root_token from downloaded file>` into sign in
-1. Select “Sign In”
 
 ## Supprted versions
-* `Ubuntu Server 20.04/1 64-bit`
+* `Ubuntu Server 20.04.1 64-bit`
 * `Ansible v2.11+`
 * `Vault v1.6.1+`
 * `Consul v1.9.1+`

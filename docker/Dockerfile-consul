@@ -1,4 +1,5 @@
-FROM consul:1.9.1
+ARG CONSUL_VERSION
+FROM consul:${CONSUL_VERSION}
 
 # add the config file
 COPY conf/docker/consul/consul-config.hcl /consul/config/consul-config.hcl

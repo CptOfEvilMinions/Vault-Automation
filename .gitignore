@@ -1,5 +1,5 @@
-conf/tls/*.crt
-conf/tls/*.key
+conf/tls/*
+!conf/tls/tls.conf.example
 *.crt
 *.key
 *.json
