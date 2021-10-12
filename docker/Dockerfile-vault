@@ -1,4 +1,4 @@
-ARGS VAULT_VERSION
+ARG VAULT_VERSION
 FROM vault:${VAULT_VERSION}
 
 # add the config file
