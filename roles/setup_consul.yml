@@ -24,12 +24,12 @@
 - name: Download Consul
   get_url:
     url: '{{ consul_dl_url }}'
-    dest: /tmp/consul_{{ consul_version }}_linux_amd64.zip
+    dest: /tmp/consul_{{ consul_version }}_linux_{{ arch }}.zip
   when: not consul_install.stat.exists
 
 - name: Unarchive Consul
   unarchive:
-    src: /tmp/consul_{{ consul_version }}_linux_amd64.zip
+    src: /tmp/consul_{{ consul_version }}_linux_{{ arch }}.zip
     dest: /tmp
     remote_src: true
   when: not consul_install.stat.exists

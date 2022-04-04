@@ -42,3 +42,8 @@
     - tcpdump
     - net-tools
     - unzip
+
+- name: set up arch
+  set_fact:
+    arch: "arm64"
+  when: ansible_architecture == "aarch64"
