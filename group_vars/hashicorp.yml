@@ -1,7 +1,8 @@
+arch: "amd64"
 ########################################### Consul ###########################################
-consul_version: '1.9.1'
-consul_dl_url: 'https://releases.hashicorp.com/consul/{{ consul_version }}/consul_{{ consul_version }}_linux_amd64.zip'
+consul_version: '1.11.4'
+consul_dl_url: 'https://releases.hashicorp.com/consul/{{ consul_version }}/consul_{{ consul_version }}_linux_{{arch}}.zip'
 
 ########################################### Vault ###########################################
-vault_version: '1.6.1'
-vault_dl_url: 'https://releases.hashicorp.com/vault/{{ vault_version }}/vault_{{ vault_version }}_linux_amd64.zip'
+vault_version: '1.10.0'
+vault_dl_url: 'https://releases.hashicorp.com/vault/{{ vault_version }}/vault_{{ vault_version }}_linux_{{arch}}.zip'
